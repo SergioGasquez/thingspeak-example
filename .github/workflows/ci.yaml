@@ -1,0 +1,42 @@
+name: Build check
+
+on:
+  push:
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-idf-env:
+    name: Build idf-env
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get install libudev-dev
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup | Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          components: rustfmt, clippy, rust-src
+      - name: Enable caching
+        uses: Swatinem/rust-cache@v2
+      - name: Setup | ldproxy (binary)
+        id: ldproxy-binary
+        continue-on-error: true
+        run: |
+          sudo curl -L "https://github.com/esp-rs/embuild/releases/latest/download/ldproxy-x86_64-unknown-linux-gnu.zip" -o "/home/runner/.cargo/bin/ldproxy.zip"
+          unzip "/home/runner/.cargo/bin/ldproxy.zip" -d "/home/runner/.cargo/bin/"
+          chmod u+x /home/runner/.cargo/bin/ldproxy
+      - name: Setup | ldproxy (cargo)
+        if: steps.ldproxy-binary.outcome != 'success'
+        run: cargo install ldproxy
+      - name: Build
+        run: cargo build --release
+      - name: Format check
+        run: cargo fmt -- --check
+      - name: Clippy check
+        run: cargo clippy --no-deps -- -Dwarnings

@@ -8,20 +8,20 @@ ThingSpeak, via MQTT, where it can be [visualized in this dashboard](https://thi
 ![ThingSpeak Dashboard](static/thingspeak_dashboard.png)
 
 If you want to reproduce this example:
-0. Setup your ThingSpeak account.
-1. [Create a new channel](https://www.mathworks.com/help/thingspeak/channel-settings.html)
+1. [Sign in or create an account](https://thingspeak.com/login?skipSSOCheck=true).
+2. [Create a new channel](https://www.mathworks.com/help/thingspeak/channel-settings.html)
    1. Add the proper fields (in this case `humidity` and `temperature`)
-2. [Create a MQTT Device](https://www.mathworks.com/help/thingspeak/mqtt-basics.html)
+3. [Create a MQTT Device](https://www.mathworks.com/help/thingspeak/mqtt-basics.html)
    1. Make sure you authorize acess to your channel when creating the device.
-3. Rename `cfg.toml.example` to `cfg.toml`
-4. Fill the `cfg.toml` with
+4. Rename `cfg.toml.example` to `cfg.toml`
+5. Fill the `cfg.toml` with
    1. `wifi_ssid`: Wifi SSID
    2. `wifi_pass`: Wifi password
    3. `client_id`: MQTT Client ID
    4. `username`: Username of the MQTT Device (It's the same as MQTT Client ID)
    5. `password`: Password of the MQTT Device
    6. `channel_id`: Channel ID (You can find this info in your channel pannel.)
-5. Modify the Field Charts from the dashboard.
+6. Modify the Field Charts from the dashboard.
 
 
 ## Dev Containers

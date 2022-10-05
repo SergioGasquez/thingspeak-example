@@ -1,4 +1,4 @@
-name: Build check
+name: Continuous Integration
 
 on:
   push:
@@ -8,8 +8,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build-idf-env:
-    name: Build idf-env
+  rust-checks:
+    name: Rust Checks
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies

@@ -1,0 +1,8 @@
+[losant-example]
+wifi_ssid = ""
+wifi_pass = ""
+# Losant
+client_id = ""
+username = ""
+password = ""
+channel_id = ""

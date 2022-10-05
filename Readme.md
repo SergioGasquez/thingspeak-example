@@ -1,4 +1,7 @@
 # ThingSpeak Example
+
+[![Continuous Integration](https://github.com/SergioGasquez/thingspeak-example/actions/workflows/ci.yaml/badge.svg)](https://github.com/SergioGasquez/thingspeak-example/actions/workflows/ci.yaml)
+
 Simple example built for [esp-rust-board](https://github.com/esp-rs/esp-rust-board) that sends temperature and humidity to
 ThingSpeak, via MQTT, where it can be [visualized in this dashboard](https://thingspeak.com/channels/1882512).
 

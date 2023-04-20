@@ -23,7 +23,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly
-          components: rustfmt, clippy, rust-src
+          components: clippy, rustfmt, rust-src
       - name: Enable caching
         uses: Swatinem/rust-cache@v2
       - name: Setup | ldproxy (binary)
